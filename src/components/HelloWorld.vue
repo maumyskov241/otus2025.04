@@ -11,6 +11,7 @@ const target = ref('_blank')
 const count2 = ref(9000)
 const color = ref('green')
 const func = (x) => {alert(x)}
+const func2 = () => 'orange'
 
 </script>
 
@@ -24,6 +25,7 @@ const func = (x) => {alert(x)}
     <button type="button" :class="color" @click="count++">count is {{ count }}</button>
     <button v-show="count % 5 == 0" type="button" v-on:click="count2--;count++;count2--;count++;"> count + count2</button>
   </div>
+  <div :class="func2()">1</div>
 
   <p><a :href="href" :target="target">{{target}}</a></p>
 
@@ -35,5 +37,8 @@ const func = (x) => {alert(x)}
 }
 .green {
   background-color: green;
+}
+.orange {
+  background-color: orange;
 }
 </style>
