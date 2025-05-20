@@ -1,19 +1,9 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import Templates from './components/Templates.vue'
+import ComponentsPropsEvents from './components/ComponentsPropsEvents/Main.vue'
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
-  <Templates msg="Занятие 'Шаблоны'" />
+  <ComponentsPropsEvents msg="Занятие 'Компоненты props и события '" />
 </template>
 
 <style scoped>

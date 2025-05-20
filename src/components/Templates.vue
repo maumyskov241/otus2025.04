@@ -30,7 +30,7 @@ const color = ref('black')
 </script>
 
 <template>
-  <h1 :style={color:color} @mouseover="color = 'red'" @mouseout="color = 'lime'">{{ msg }}</h1>
+  <h1 :style=[{color:color}] @mouseover="color = 'red'" @mouseout="color = 'lime'">{{ msg }}</h1>
   <!-- Подскажите, почему в итоге получилось в теге h1 'style="color: lime; --7aad6f05-border: rgb(108, 143, 116);"', вроде должно быть просто 'style="color: lime;'. Что-то я тут накрутил. -->
   <button @click="showList = !showList">Список {{ showList ? '-' : '+' }}</button>
   <div class="card" v-show="showList">
