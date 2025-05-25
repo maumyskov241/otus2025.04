@@ -1,7 +1,7 @@
 <script setup ts>
 import { ref, reactive } from 'vue'
 import { Form, Field, ErrorMessage, defineRule, configure } from 'vee-validate'
-import { required, min, length, email, regex, max, integer} from "@vee-validate/rules"
+import { required, min, length, email, regex, max, integer, is} from "@vee-validate/rules"
 import { localize, setLocale } from '@vee-validate/i18n'
 import ru from '@vee-validate/i18n/dist/locale/ru.json'
 
@@ -20,6 +20,7 @@ defineRule('email', email);
 defineRule('regex', regex);
 defineRule('max', max);
 defineRule('integer', integer);
+defineRule('is', is);
 
 const emit = defineEmits()
 const fio = ref('')
@@ -27,6 +28,7 @@ const mail = ref('')
 const birthday = ref('')
 const country = ref('')
 const adress = ref('')
+const agreement = ref('')
 const card = ref({main : ''}, {second : '' })
 
 function onSubmit(values) {
@@ -78,6 +80,11 @@ const show = ref(false)
       <Field name="card.second" style="width:30px" type="password" maxlength="3" v-model="card.second" placeholder="***" rules="required|integer|min:3|max:3" />
       <ErrorMessage name="card.main" />
       <ErrorMessage name="card.second" />
+
+      <Field name="agreement" type="checkbox" v-model="agreement" value="1" rules="is:1"></Field> соглашаюсь на обработку персональных данных.
+      <ErrorMessage name="agreement">
+        <span role="alert">Необходимо дать согласие</span>
+      </ErrorMessage>
 
       <button>Submit</button>
 
