@@ -53,7 +53,7 @@ const show = ref(false)
       <ErrorMessage name="fio" />
 
       <div>* Почта <b>{{ mail }}</b></div>
-      <Field name="mail" type="email" v-model="mail" placeholder="Почта" rules="required|email|max:255" />
+      <Field name="mail" type="email" v-model.trim.lazy="mail" placeholder="Почта" rules="required|email|max:255" />
       <ErrorMessage name="mail" />
 <!--
       <div>* ФИО <b>{{ fio }}</b></div>
