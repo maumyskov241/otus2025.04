@@ -1,6 +1,6 @@
 <script setup>
 
- defineProps(["item"])
+ defineProps({item : Object})
 
 </script>
 <template>
@@ -15,11 +15,18 @@
 </template>
 <style scoped>
 #current-item {
-    border: 1px solid red;
     position: fixed;
     top:0;
     right:0;
     width:350px;
-    background-color:aquamarine
+    background-color:rgb(245, 236, 222);
+    border: 1px solid #DADADA;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    padding: 10px;
+    min-height: 50%;
+}
+
+#current-item h2 {
+    min-height: 100px;
 }
 </style>

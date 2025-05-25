@@ -1,9 +1,9 @@
 <script setup>
-import ComponentsPropsEvents from './components/ComponentsPropsEvents/Main.vue'
+import Products from './components/Products/Main.vue'
 </script>
 
 <template>
-  <ComponentsPropsEvents msg="Занятие 'Компоненты props и события '" />
+  <Products msg="Товары" />
 </template>
 
 <style scoped>
