@@ -1,7 +1,7 @@
 <script setup ts>
 import { ref, reactive } from 'vue'
 import { Form, Field, ErrorMessage, defineRule, configure } from 'vee-validate'
-import { required, min, length, email, regex, max, is,} from "@vee-validate/rules"
+import { required, min, length, email, regex, max, integer} from "@vee-validate/rules"
 import { localize, setLocale } from '@vee-validate/i18n'
 import ru from '@vee-validate/i18n/dist/locale/ru.json'
 
@@ -19,6 +19,7 @@ defineRule('length', length);
 defineRule('email', email);
 defineRule('regex', regex);
 defineRule('max', max);
+defineRule('integer', integer);
 
 const emit = defineEmits()
 const fio = ref('')
@@ -26,7 +27,6 @@ const mail = ref('')
 const birthday = ref('')
 const country = ref('')
 const adress = ref('')
-const agree= ref(false)
 const card = ref({main : ''}, {second : '' })
 
 function onSubmit(values) {
