@@ -46,7 +46,7 @@ const show = ref(false)
 <template>
   <div id="checkout">
     <input type="button" class="add-btn" @click="show = !show" :value="msg"/>
-    <Form v-show="show"  @submit="onSubmit" v-slot="{ values }">
+    <Form v-show="show"  @submit="onSubmit" v-slot="{ values, errors }">
 
       <div>* ФИО <b>{{ fio }}</b></div>
       <Field name="fio" type="text" v-model.trim="fio" placeholder="ФИО" rules="required|min:4|max:255" />
@@ -78,12 +78,12 @@ const show = ref(false)
       <div>* Карта <b>{{ card.main }}</b></div>
       <Field name="card.main" type="text"  style="width:220px;float:left" v-model.trim="card.main" maxlength="16" placeholder="xxxx xxxx xxxx xxxx" rules="required|integer|min:16|max:16" />
       <Field name="card.second" style="width:30px" type="password" maxlength="3" v-model="card.second" placeholder="***" rules="required|integer|min:3|max:3" />
-      <ErrorMessage name="card.main" />
-      <ErrorMessage name="card.second" />
+      <span v-if="errors['card.main'] !== undefined || errors['card.second'] !== undefined " role="alert">Необходимо правильно заполнить данные карты</span>
+
 
       <Field name="agreement" type="checkbox" v-model="agreement" value="1" rules="is:1"></Field> соглашаюсь на обработку персональных данных.
       <ErrorMessage name="agreement">
-        <span role="alert">Необходимо дать согласие</span>
+        
       </ErrorMessage>
 
       <button>Submit</button>
