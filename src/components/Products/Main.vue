@@ -33,7 +33,7 @@ const showMore = function (item) {
   currentItem.value = item;
 }
 const checkout = function (values) {
-  axios.post('https://httpbin.org/delay/3', values)
+  axios.post('https://httpbin.org/delay/1', values)
     .then((response) => {
         alert('Status ' + response.status);
         window.setTimeout(function(){

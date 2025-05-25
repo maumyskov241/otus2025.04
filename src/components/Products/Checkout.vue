@@ -83,7 +83,7 @@ const show = ref(false)
 
       <Field name="agreement" type="checkbox" v-model="agreement" value="1" rules="is:1"></Field> соглашаюсь на обработку персональных данных.
       <ErrorMessage name="agreement">
-        
+        <span role="alert">Необходимо дать согласие</span>
       </ErrorMessage>
 
       <button>Submit</button>
