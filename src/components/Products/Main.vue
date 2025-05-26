@@ -60,7 +60,7 @@ defineProps({
 
 <template>
   <h1>{{ msg }}</h1>
-  <input v-model="data.search" type="text" placeholder="Поиск"/> {{ data.search }}
+  <input v-model="data.search" type="text" placeholder="Поиск"/>
   <products-item @show-more="showMore" :item="item" v-for="item in filteredList" :key="item.id"></products-item>
   <detail-view v-if="Object.keys(currentItem).length > 0" :item="currentItem.value"></detail-view>
   <product-add @add-product="addProduct" msg="Добавить товар"></product-add>
