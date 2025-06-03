@@ -1,7 +1,7 @@
 <script setup>
 import "../../assets/components-props-events.css";
 import axios, * as others from 'axios'
-import { onMounted, computed,ref, reactive} from 'vue'
+import { onMounted, computed, ref, reactive} from 'vue'
 import  ProductsItem  from './Item.vue'
 import  DetailView  from './DetailView.vue'
 import  ProductAdd  from './Add.vue'
