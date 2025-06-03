@@ -1,12 +1,11 @@
 <script setup>
 import axios, * as others from 'axios'
-import { onMounted, computed, ref, reactive } from 'vue'
+import { onMounted, computed, ref, reactive, Suspense } from 'vue'
 import ProductItem from './ProductItem.vue'
 import ProductDetailView from './ProductDetailView.vue'
 import BasketButtonMain from './BasketButtonMain.vue'
 import ProductCreate from './ProductCreate.vue'
-
-const data = reactive({ products: [], search: '' })
+const data = reactive({products: await fetch('https://fakestoreapi.com/products').then((r) =>  r.json().then((actualData) => actualData)), search: ''});
 const url = 'https://fakestoreapi.com/products'
 const currentItem = reactive({})
 const basket = reactive({})
@@ -89,12 +88,7 @@ const createProduct = function (values) {
 
 onMounted(() => {
   basket.value = JSON.parse(localStorage.getItem('basket')) ?? {}
-  axios
-    .get(url)
-    .then((response) => {
-      data.products = response.data
-      if (response.data.length > 0) currentItem.value = response.data[0]
-    })
+
 })
 
 </script>
@@ -126,7 +120,7 @@ onMounted(() => {
       </div>
     </div>
   </div>
-
+ 
   <div v-if="$route.name === 'products'" class="row row-cols-1 row-cols-md-3 mb-3 text-center">
     <ProductItem @add-to-basket="addToBasket" :item="item" v-for="item in filteredList" :key="item.id"></ProductItem>
   </div>
