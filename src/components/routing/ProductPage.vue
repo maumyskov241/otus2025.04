@@ -5,9 +5,8 @@ import ProductItem from './ProductItem.vue'
 import ProductDetailView from './ProductDetailView.vue'
 import BasketButtonMain from './BasketButtonMain.vue'
 import ProductCreate from './ProductCreate.vue'
-const data = reactive({products: await fetch('https://fakestoreapi.com/products').then((r) =>  r.json().then((actualData) => actualData)), search: ''});
-const url = 'https://fakestoreapi.com/products'
-const currentItem = reactive({})
+const products = JSON.parse(localStorage.getItem('products')) || await fetch('https://fakestoreapi.com/products').then((r) =>  r.json().then((actualData) => (actualData)))
+const data = reactive({products: products, search: ''});
 const basket = reactive({})
 const refreshDelay = ref(1000)
 const refreshIntervalId = ref(0)
@@ -84,6 +83,7 @@ const createProduct = function (values) {
   values['id'] = autoincrement.value++;
 
   data.products.push(values);
+  localStorage.setItem('products', JSON.stringify(data.products))
 }
 
 onMounted(() => {
