@@ -1,20 +1,18 @@
 import { createWebHistory, createRouter } from 'vue-router'
 
-import IndexPage from './components/routing/IndexPage.vue'
-import ProductPage from './components/routing/ProductPage.vue'
-import BasketPage from './components/routing/BasketPage.vue'
-import NotFoundPage from './components/routing/NotFoundPage.vue'
-import CheckoutPage from './components/routing/CheckoutPage.vue'
-import LoginPage from './components/routing/LoginPage.vue'
+import ProductView from './views/ProductsView.vue'
+import BasketView from './views/BasketView.vue'
+import NotFoundPage from './views/NotFoundPage.vue'
+import CheckoutView from './views/CheckoutView.vue'
+import LoginView from './views/LoginView.vue'
 
 const routes = [
-  { path: '/', name: 'home', component: IndexPage },
-  { path: '/login', name: 'login', component: LoginPage },
-  { path: '/basket', name: 'basket', component: BasketPage },
-  { path: '/checkout', name: 'checkout', component: CheckoutPage },
-  { path: '/products', name: 'products', component: ProductPage },
-  { path: '/product/:id', name: 'product', component: ProductPage, props: true },
-  { path: '/product/create', name: 'productCreate', component: ProductPage },
+  { path: '/login', name: 'login', component: LoginView },
+  { path: '/basket', name: 'basket', component: BasketView },
+  { path: '/checkout', name: 'checkout', component: CheckoutView },
+  { path: '/', name: 'products', component: ProductView },
+  { path: '/product/:id', name: 'product', component: ProductView, props: true },
+  { path: '/product/create', name: 'productCreate', component: ProductView  },
   { path: '/:pathMatch(.*)*', name: '404', component: NotFoundPage },
 ]
 

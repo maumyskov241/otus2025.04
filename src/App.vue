@@ -1,11 +1,11 @@
 <script setup>
-import Routing from './components/routing/Main.vue'
+import Main from './components/layout/Main.vue'
 
 </script>
 
 <template>
   <div class="container py-3">
-  <Routing/>
+  <Main/>
   </div>
 </template>
 

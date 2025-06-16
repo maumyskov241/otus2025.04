@@ -14,13 +14,6 @@ const ls = ref(localStorage.auth);
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <RouterLink class="nav-link" to="/products">Товары</RouterLink>
-              </li>
-            </ul>
-          </div>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
                 <RouterLink class="nav-link" to="/basket">Корзина</RouterLink>
               </li>
             </ul>
