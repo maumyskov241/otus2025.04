@@ -8,3 +8,9 @@
 ## Запуск
 
 - 'npm run dev'
+
+## Тестирование
+
+- 'npx playwright test'
+
+- 'npx vitest run'
