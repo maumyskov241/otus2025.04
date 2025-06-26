@@ -7,14 +7,14 @@ const ls = ref(localStorage.auth);
 <template>
   <header>
     <div class="container">
-      <h1 data-testid="title">Роутинг</h1>
+      <h1>Роутинг</h1>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <RouterLink class="navbar-brand" to="/">Главная</RouterLink>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <RouterLink data-testid="basket-link" class="nav-link" to="/basket">Корзина</RouterLink>
+                <RouterLink class="nav-link" to="/basket">Корзина</RouterLink>
               </li>
             </ul>
 

@@ -27,7 +27,7 @@ watch(basket, function (newBasket) {
     <div class="row gx-5">
       <div class="col">
         <div class="p-3">
-          <h3>Корзина товаров</h3>
+          <h3 data-testid="basket-title">Корзина товаров</h3>
         </div>
       </div>
     </div>
