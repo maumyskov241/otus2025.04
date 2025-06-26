@@ -83,7 +83,7 @@ const clearBasket = () => Object.keys(basket).forEach((key) => delete basket[key
 
                         <div class="d-flex justify-content-between mb-5">
                             <h5 class="text-uppercase">Итоговая стоимость</h5>
-                            <h5>₽ {{ calculateTotal.finalPrice }}</h5>
+                            <h5 id="total-price">₽ {{ calculateTotal.finalPrice }}</h5>
                         </div>
 
                         <button type="button" @click="clearBasket" data-mdb-button-init data-mdb-ripple-init

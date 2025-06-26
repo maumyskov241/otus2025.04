@@ -27,5 +27,12 @@ describe("BasketButton component", () => {
         await wrapper.find('button[title="убрать из корзины"]').trigger('click')
         
         expect(wrapper.html()).toContain('1 товаров')
+
+        await wrapper.find('#id3').find('.up').trigger('click');
+        await wrapper.find('#id3 .up').trigger('click');
+        await wrapper.find('#id3 .up').trigger('click');
+        await wrapper.find('#id3 .up').trigger('click');
+
+        expect(wrapper.find('#total-price').html()).toContain('₽ 835.94')
     })
 });
