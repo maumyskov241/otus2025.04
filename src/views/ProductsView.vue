@@ -5,8 +5,55 @@ import ProductItem from '../components/ui/ProductItem.vue'
 import ProductDetailView from './ProductDetailView.vue'
 import BasketButtonMain from '../components/ui/BasketButton.vue'
 import ProductCreateView from './ProductCreateView.vue'
+import { useQuery } from "@vue/apollo-composable"
+import { gql } from "@apollo/client/core";
+import { apolloClient } from "../components/apollo"
+
+const GET_PRODUCTS = gql`
+query productsQuery {
+  products {
+    id
+    title
+    price
+    description
+    category
+    image
+    rate
+    count
+  }
+}`;
+
+const {result : data, loading, error} = useQuery(GET_PRODUCTS)
+console.log(loading);
+console.log(error);
+console.log(data);
+
+
+import { provideApolloClient } from '@vue/apollo-composable'
+
+const query = provideApolloClient(apolloClient)(() => useQuery(gql`
+query productsQuery {
+  products {
+    id
+    title
+    price
+    description
+    category
+    image
+    rate
+    count
+  }}
+`))
+const hello = computed(() => query.result.value)
+console.log(hello);
 const products = JSON.parse(localStorage.getItem('products')) || await fetch('https://fakestoreapi.com/products').then((r) => r.json().then((actualData) => (actualData)))
-const data = reactive({ products: products, search: '' });
+
+
+
+
+
+
+const dataR = reactive({ products: products, search: '' });
 const basket = reactive({})
 const refreshDelay = ref(1000)
 const refreshIntervalId = ref(0)
@@ -14,9 +61,9 @@ const refreshRefreshingIntervalId = ref(0)
 let autoincrement = ref(999)
 
 const filteredList = computed(() => {
-  return data.products.filter(function (elem) {
-    if (data.search === '') return true;
-    else return elem.title.toLowerCase().indexOf(data.search.toLowerCase()) > -1 || (elem.price + '').indexOf(data.search) > -1;
+  return dataR.products.filter(function (elem) {
+    if (dataR.search === '') return true;
+    else return elem.title.toLowerCase().indexOf(dataR.search.toLowerCase()) > -1 || (elem.price + '').indexOf(dataR.search) > -1;
   })
 })
 
@@ -25,7 +72,7 @@ const props = defineProps({
 })
 
 const getProductById = computed(() => {
-  return data.products.filter(function (elem, i) {
+  return dataR.products.filter(function (elem, i) {
     if (elem.id == props.id) return true;
     return false
   })
@@ -82,8 +129,8 @@ const createProduct = function (values) {
   values['rating'] = { rate: 0, count: 0 }
   values['id'] = autoincrement.value++;
 
-  data.products.push(values);
-  localStorage.setItem('products', JSON.stringify(data.products))
+  dataR.products.push(values);
+  localStorage.setItem('products', JSON.stringify(dataR.products))
 }
 
 onMounted(() => {
@@ -103,7 +150,7 @@ onMounted(() => {
       <div class="col">
         <div class="p-3">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" v-model="data.search" placeholder="Поиск"
+            <input type="text" class="form-control" v-model="dataR.search" placeholder="Поиск"
               aria-label="Имя пользователя получателя" aria-describedby="basic-addon2">
             <span class="input-group-text"
               v-on="$route.params.id ? { click: () => goToIndexPage($router), mouseover: () => carousel($router, $route), mouseout: () => stopCarousel() } : {}"
